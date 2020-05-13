@@ -24,7 +24,6 @@ export class ProductDetailPage implements OnInit {
   ngOnInit() {
     let url="http://192.168.3.10:3000/product?pid="+this.pid
     this.myhttp.get(url).subscribe((result:any)=>{
-      console.log(result)
       this.product = result
       this.pstar = this.product[0].pstar
       this.pimg[0] = this.product[0].img1
