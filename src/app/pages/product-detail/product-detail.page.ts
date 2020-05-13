@@ -3,7 +3,6 @@ import { ToastController} from '@ionic/angular';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.page.html',
@@ -22,8 +21,6 @@ export class ProductDetailPage implements OnInit {
   product:Array<any> = [0]
   productReview:Array<any> = [0]
   
-  
-
   ngOnInit() {
     let url="http://192.168.3.10:3000/product?pid="+this.pid
     this.myhttp.get(url).subscribe((result:any)=>{
@@ -39,7 +36,6 @@ export class ProductDetailPage implements OnInit {
     this.myhttp.get(urlReview).subscribe((result:any)=>{
       this.productReview = result
     })
-
   }
 
   async presentToast(message) {
