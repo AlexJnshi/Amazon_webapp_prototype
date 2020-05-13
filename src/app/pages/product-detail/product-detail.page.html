@@ -1,0 +1,134 @@
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+            <ion-label>
+                <h6>{{product[0].vendor}}</h6>
+                <h1>{{product[0].title}}-{{product[0].pfamily}}</h1>
+                <div [ngClass]="{'icon-medium-star-4-5':pstar==4.5}" class="icon"></div>
+            </ion-label>
+        </ion-list-header>
+
+        
+            
+            <ion-slides style="height: 200px;" pager="true" [options]="slideOpts">
+                <ion-slide *ngFor="let p of pimg; let i = index">
+                    <ion-img style="height: 200px;" [src]="p"></ion-img>
+                </ion-slide>
+            </ion-slides>
+        
+        <ion-item lines="none">
+            <ion-text>
+                <h5>Price:</h5>
+            </ion-text>
+            <ion-text color="danger">
+                <h5 style="padding-left: 10px;">{{product[0].price|currency}}</h5>
+            </ion-text>
+            <div style="margin: 5px 0 0 5px;" [class]="product[0].isPrime?'icon-prime':''">
+            </div>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-text [color]="product[0].pqty>0?'success':'danger'">
+                <h5>{{product[0].pqty>0?"In stock.":"Out of stock"}}</h5>
+            </ion-text>
+        </ion-item>
+        <ion-item lines="none">
+            <ion-text>
+                <h6>Ships from and sold by {{product[0].seller}}.</h6>
+            </ion-text>
+        </ion-item>
+        
+        <ion-button (click)="buyNow()" slot="end" color="warning" expand="block" shape="round">
+            <ion-icon name="play-outline" color="light"></ion-icon>
+            Buy Now
+        </ion-button>
+        <ion-button (click)="addToCart()" color="warning" expand="block" shape="round">
+            <ion-icon name="cart-outline" color="light" ></ion-icon>
+            Add to Cart
+        </ion-button>
+        
+    </ion-list>
+    
+    <ion-card>
+        <ion-card-header>
+            <ion-text color="dark">
+                <h2>Description</h2>
+            </ion-text>
+        </ion-card-header>
+        <ion-card-content>
+            <ion-text color="dark">
+                <h2>{{product[0].details}}</h2>
+            </ion-text>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-text color="dark">
+                <h2>Customer reviews</h2>
+            </ion-text>
+        </ion-card-header>
+        <ion-item lines="full">
+            <div class="icon {{pstar>=4.75&&pstar<=5?'icon-medium-star-5':''}}
+                {{pstar>=4.25&&pstar<4.75?'icon-medium-star-4-5':''}}
+                {{pstar>=3.75&&pstar<4.25?'icon-medium-star-4':''}}"></div>
+            <span style="margin-left:10px;">{{pstar}} out of 5</span>    
+        </ion-item>
+        <ion-item lines="none">
+            <ion-text color="dark">
+                <h2>Top reviews</h2>
+            </ion-text>
+        </ion-item>
+
+        <!-- customer reviews -->
+
+        <div *ngFor="let p of productReview;let i = index">
+            <ion-item lines="none">
+                <ion-avatar>
+                    <ion-img [src]="p.avatar"></ion-img>
+                </ion-avatar>
+                
+                <ion-text style="margin-left: 15px;" color="dark">
+                    <h5>{{p.nickname}}</h5>
+                </ion-text>
+            </ion-item>
+            <div class="user-review-content">
+                <div style="margin-bottom: -3px ;"  class="icon
+                 {{p.star>=4.75&&p.star<=5?'icon-medium-star-5':''}}
+                 {{p.star>=4.25&&p.star<4.75?'icon-medium-star-4-5':''}}
+                 {{p.star>=3.75&&p.star<4.25?'icon-medium-star-4':''}}"></div>
+                <ion-text color="danger" style="margin-left: 10px; font-size: 0.9rem;">
+                    {{p.verifiedPurchase?"Verified Purchase":""}}
+                </ion-text>
+            </div>
+            <div class="user-review-content">
+                <ion-label>
+                    <ion-text color="medium">
+                        <h5>Reviewed on {{p.timestamp|date:"d MMM,y"}}</h5>
+                    </ion-text>
+                </ion-label>
+            </div>
+            <div style="font-weight:bolder; font-size: 1.2rem;" class="user-review-content">
+                <ion-text color="dark">
+                {{p.rtitle}}
+                </ion-text>
+            </div>
+            <div class="user-review-content">
+                <ion-text color="dark">
+                   {{p.review}}
+                </ion-text>
+            </div>
+            <div class="user-review-content">
+                <ion-text color="medium">
+                    {{p.rHelpfulNum}} people found this helpful
+                </ion-text>
+            </div>
+            <div class="user-review-content" style="margin-bottom: 15px;">
+                <ion-button [disabled]="p.isHelpClicked" (click)="helpful(i)" color="dark" fill="outline" size="small">Helpful</ion-button>
+                <ion-button [disabled]="p.isReported" (click)="report(i)" color="medium" fill="clear" size="small">Report</ion-button>
+            </div>
+            
+        </div>
+        
+    </ion-card>
+    
+</ion-content>

@@ -1,0 +1,114 @@
+<!-- Searchbar is just demo, no function yet, cause this demo does not include many products data.-->
+<ion-item color="none" lines="none">
+  <ion-searchbar animated></ion-searchbar>
+</ion-item>
+
+<!-- Slides carousel -->
+<!-- The routerLink should be the specific product detail link, but I did have that product detail info, so I redirct user to product-list page  -->
+<ion-slides style="height: 150px;" pager="true" [options]="slideOpts">
+  <ion-slide *ngFor="let p of pImg; let i = index" routerLink="/index/product-list">
+    <ion-img [src]="p.img" alt={{i}}></ion-img>
+  </ion-slide>
+</ion-slides>
+
+<!-- Pic bar under carousel with 5px margin top and bottom -->
+<div id="home-picbar-under-carouse1">
+  <ion-img routerLink="/index/product-list" src="../../assets/img/home-picbar1.jpeg"></ion-img>
+</div>
+
+<!-- Download app pic  -->
+<!-- This part is demo the structure of download app, no function-->
+<div>
+  <ion-img src="../../assets/img/home-appDownload1.jpeg"></ion-img>
+</div>
+
+<!-- Home-shop-deals  -->
+<!-- This part is demo the structure of product category, 
+click will be redirected to procuct-list page. -->
+<div id="home-shop-deals">
+  <ion-list>
+
+    <ion-item lines="none"> 
+      <ion-label>
+        <h1 id="home-shop-deal-text">Shop Deals</h1>
+      </ion-label>
+    </ion-item>
+    
+    <ion-item style="height: 200px;" lines="none" routerLink="/index/product-list"> 
+        <ion-img style="height: 200px;" src="../../assets/img/home-shop-deals.jpeg"></ion-img>    
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        Save up to 25% on Baby Changing Products. Discount included in prices displayed.
+      </ion-label>
+    </ion-item>
+    
+    <ion-item button detail lines="none" routerLink="/index/product-list">
+      <ion-label>
+        <ion-text color="primary" >
+         <h2>See All Deals</h2>
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    
+  </ion-list>
+</div>
+
+<div id="home-shop-best-sellers" routerLink="/index/product-list">
+  <ion-list>
+    <ion-item lines="none"> 
+      <ion-label>
+        <h1 id="home-shop-deal-text">Shop best sellers</h1>
+      </ion-label>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col routerLink="/index/product-list">
+          <ion-img src="../../assets/img/home-s-b-s-1.jpeg"></ion-img>
+          <ion-text><h5>Clothing & Shoes</h5></ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-img src="../../assets/img/home-s-b-s-2.jpeg"></ion-img>
+          <ion-text><h5>Home & Kitchen</h5></ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-img src="../../assets/img/home-s-b-s-3.jpeg"></ion-img>
+          <ion-text><h5>Beauty</h5></ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-img src="../../assets/img/home-s-b-s-4.jpeg"></ion-img>
+          <ion-text><h5>Personal Care</h5></ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-img src="../../assets/img/home-s-b-s-5.jpeg"></ion-img>
+          <ion-text><h5>Books</h5></ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-img  src="../../assets/img/home-s-b-s-6.jpeg"></ion-img>
+          <ion-text><h5>Electronics</h5></ion-text>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-img src="../../assets/img/home-s-b-s-7.jpeg"></ion-img>
+          <ion-text><h5>Sports & Outdoors</h5></ion-text>
+        </ion-col>
+        <ion-col>
+          <ion-img src="../../assets/img/home-s-b-s-8.jpeg"></ion-img>
+          <ion-text><h5>Toys & Games</h5></ion-text>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+    
+  </ion-list>
+</div>

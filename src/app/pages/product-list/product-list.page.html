@@ -1,0 +1,23 @@
+<ion-list>
+  <ion-item *ngFor="let p of products,let i=index" (click)="product_detail(p.pid)">
+    <ion-img [src]="p.img1" style="width: 118px; margin: 10px 0;"></ion-img>
+    <ion-label style="margin-left: 15px;" text-wrap>
+      <h2>{{p.title}}</h2>
+      <h3>by {{p.vendor}}</h3>
+      <div class="icon 
+      {{p.pstar>=4.75&&p.pstar<=5?'icon-small-star-5':''}}
+      {{p.pstar>=4.25&&p.pstar<4.75?'icon-small-star-4-5':''}}
+      {{p.pstar>=3.75&&p.pstar<4.25?'icon-small-star-4':''}}  " ></div><ion-text color=medium><sup>12</sup></ion-text>
+      <p>{{p.pfamily}}</p>
+      <ion-text color="danger">
+        <h3>{{p.price|currency}}</h3>
+        <div [class]="p.is_prime?'icon-prime':''"></div>
+      </ion-text>
+      <p>{{p.pqty==0?"Out of Stock":"In stock"}}</p>
+      <ion-text style="font-size: 0.7em;">FREE Shipping on eligible orders</ion-text>  
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+<!-- ../../assets/productsImg/xenoblade2_1.jpeg -->
+

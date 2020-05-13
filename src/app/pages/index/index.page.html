@@ -1,0 +1,103 @@
+<!-- index page cotain webapp head, side menu, and feb button. This page will be shown on all other pages as action control menu. -->
+<!-- header start -->
+<ion-header>
+  <ion-toolbar>
+<!-- top toolbar menu button -->
+    <ion-buttons slot="start">
+      <ion-menu-button color="medium"></ion-menu-button>
+    </ion-buttons>
+<!-- top right side cart icon -->
+    <ion-buttons slot="end">
+      <ion-button routerLink="/index/cart">
+        <ion-icon color="medium"  name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+<!-- header logo  -->
+<!-- will be redirct to index(refresh) when cilck it-->
+    <ion-title>
+      <ion-img routerLink="/index" style="height: 40px;" src="../../../assets/img/home-amazon-logo.png"></ion-img>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<!-- header end -->
+
+<ion-content [fullscreen]="true">
+  <!-- side menu start -->
+  <!-- this menu is not fully functional.
+  --------when the user login--------------
+  it will grab username(should be nickname when user set it,
+  in here for demo, i am using username) to show on the menu. 
+  --------when the user not login----------
+  it will redirct user to sign in page. -->
+  <ion-menu slot="fixed" side="start" menuId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar [routerLink]="isLogin?'/index/user':'/index/sign-in'" color="primary">
+        <ion-menu-toggle>
+          <ion-title >{{isLogin?"Hello,"+uname:"Please login"}}</ion-title>
+          <ion-button>
+            <ion-icon slot="icon-only" name="person-circle-outline"></ion-icon>
+          </ion-button>
+        </ion-menu-toggle>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item>
+          <ion-menu-toggle>Account</ion-menu-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-menu-toggle>Orders</ion-menu-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-menu-toggle>Buy Again</ion-menu-toggle>
+        </ion-item>
+      </ion-list>
+      <br>
+      <ion-list>
+        <ion-item>
+          <ion-menu-toggle>Home</ion-menu-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-menu-toggle>Today's Deals</ion-menu-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-menu-toggle>Your Browsing History</ion-menu-toggle>
+        </ion-item>
+        <ion-item detail>
+          <ion-menu-toggle>Shop By Department</ion-menu-toggle>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main" main></ion-router-outlet>
+  <!-- side menu end -->
+  <!-- router-outlet, contents will show here-->
+  <router-outlet></router-outlet>
+  <!-- fab start -->
+  <!-- placed in the right of the bottom with a list on lift side -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary">
+      <ion-icon name="grid-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="start">
+      <!-- setting menu -->
+      <ion-fab-button>
+        <ion-menu-button color="dark"></ion-menu-button>
+      </ion-fab-button>
+      <!-- cart menu -->
+      <ion-fab-button routerLink="/index/cart">
+          <ion-icon name="cart-outline"></ion-icon>
+      </ion-fab-button>
+      <!-- user menu -->
+      <ion-fab-button routerLink="/index/user">
+        <ion-icon name="person-outline"></ion-icon>
+      </ion-fab-button>
+      <!-- home button -->
+      <ion-fab-button routerLink="/index">
+        <ion-icon name="home-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
+  <!-- fab end -->
+</ion-content>

@@ -1,0 +1,68 @@
+<ion-content>
+<!-- Determine if the user's shopping cart is empty, show the cart empty img and continue shopping button. -->
+<!-- cart empty start -->
+  <ion-card *ngIf="isCartEmpty">
+    <ion-card-content>
+      <ion-img src="../../../assets/img/cart-empty.svg"></ion-img>
+        <ion-text>
+          <h1 id="cart-empty-text">Your Amazon cart is empty</h1>
+        </ion-text>
+        <div id="cart-ctn-shopping-btn">  
+          <ion-button routerLink="/index/product-list"  shape="round" size="default" color="warning" expand="full">
+            <h2>Continue shopping</h2>
+          </ion-button>
+        </div> 
+    </ion-card-content>
+  </ion-card>
+<!-- cart empty end -->
+
+<!-- if cart not empty, show user's cart data -->
+  <ion-content *ngIf="!isCartEmpty" ng-controller="cartController">
+    <ion-card>
+      <ion-card-content>
+        <ion-text>
+          <!-- calculated total items user add to cart, and total price -->
+          <h2>Subtotal({{Itemqty}} {{Itemqty>1?"items":"item"}}): <span>{{totalPrice|currency:"$"}}</span></h2>
+        </ion-text>
+        <div id="cart-proceed-checkout-btn"> 
+          <ion-button (click)="checkOut()"  shape="round" size="default" color="warning" expand="full">
+            <h2>Proceed to Checkout</h2>
+          </ion-button>
+        </div>
+      </ion-card-content>
+   </ion-card>
+   <!-- cart details start -->
+    <ion-list>
+      <ion-item-sliding  *ngFor="let p of cart,let i=index" id="cart-item-sliding-{{i}}">
+        <ion-item color="light">
+          <ion-label>
+            <h2>{{p.title}}</h2>
+            <p>{{p.pfamily}}</p>
+            <ion-text color="danger">
+              <h3>{{p.price|currency}}</h3>
+            </ion-text>
+            <p>{{p.pqty==0?"Out of Stock":"In stock"}}</p>
+            <!-- giving user option to adjust item quantity or delete -->
+            <ion-toolbar id="cart-input-delete-toolbar"  color="light">
+              <ion-button color="warning" size="small" (click)="cart_minus_btn(i)">-</ion-button>
+              <ion-input id="cart-item-input-orderqty" [(ngModel)]=p.count></ion-input>
+              <ion-button color="warning" size="small" (click)="cart_plus_btn(i)">+</ion-button>
+              <ion-button color="warning" size="small" id="cart-item-delete-btn" slot="primary" (click)="cart_item_delete_btn(i)">Delete</ion-button>
+            </ion-toolbar>
+          </ion-label>
+          <!-- product img -->
+          <ion-note slot="start">
+            <ion-img [src]="p.img1" style="width:70px"></ion-img>
+          </ion-note>
+        </ion-item>
+        <!-- item can be deleted by slide left -->
+        <ion-item-options side="end">
+          <ion-item-option color="danger">
+            <ion-icon slot="icon-only" name="trash" (click)="cart_item_delete_btn(i)"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    <!-- cart details end -->
+  </ion-content>
+</ion-content>

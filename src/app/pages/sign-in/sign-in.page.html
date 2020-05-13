@@ -1,0 +1,40 @@
+<ion-item color="none" lines="none">
+  <h1>Sign in</h1>
+</ion-item>
+
+<!-- sign in card -->
+<ion-card>
+  
+
+  <ion-card-content>
+    <ion-list>
+      <!-- user name input -->
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="uname" type="text"></ion-input>
+      </ion-item>
+
+      <!-- password input -->
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input [(ngModel)]="upswd" type="password"></ion-input>
+      </ion-item>
+      <br>
+
+      <!-- sign in button -->
+      <ion-button shape="round" size="default" expand="full" (click)="signin()" >Sign in</ion-button>
+      <br>
+    </ion-list>
+    
+
+    <!-- new member redirect to sign up -->
+    <ion-item lines="none">
+      <ion-text slot="end">
+        New to Amazon? <ion-text color="primary" routerLink="/index/sign-up">Sign up</ion-text> 
+      </ion-text>
+    </ion-item>
+  </ion-card-content>
+</ion-card>
+
+
+

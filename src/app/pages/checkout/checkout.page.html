@@ -1,0 +1,66 @@
+<!-- The loading animation will show when user click checkout button,
+ since there is no order page, so no value will be passed-->
+<ion-button (click)="presentLoading()" color="warning" shape="round" expand="block">Place your order</ion-button>
+<!-- order details summarise, including totle quantity of items, delivery fee, and total price-->
+<ion-card>
+  <ion-list>
+    <ion-item lines="none">
+      <ion-label slot="start"><h5>Items:</h5></ion-label>
+      <ion-text>{{Itemqty}}</ion-text>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label slot="start"><h5>Delivery:</h5></ion-label>
+      <ion-text>{{deliveryFee()|currency}}</ion-text>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label style="font-weight: bolder;" slot="start">Order Total:</ion-label>
+      <ion-text color="danger" style="font-weight: bolder;">{{totalPrice+deliveryFee()|currency}}</ion-text>
+    </ion-item>
+  </ion-list> 
+  <ion-item lines="none">
+    <h6>Order Totals include GST.</h6>
+  </ion-item>
+</ion-card>
+
+<ion-text>
+  <h3 style="padding-left: 15px;">Delivery details</h3>
+</ion-text>
+<!-- Delivery options -->
+<ion-card>  
+  <ion-radio-group [(ngModel)]="dOpt">
+    <ion-item lines="none">
+      <ion-label>Free Delivery</ion-label>
+      <ion-text>{{0|currency}}</ion-text>
+      <ion-radio name="dOpt" slot="end" value="dFree"></ion-radio>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-label>Express post</ion-label>
+      <ion-text>{{express|currency}}</ion-text>
+      <ion-radio name="dOpt" slot="end" value="dExpress"></ion-radio>
+    </ion-item>
+  </ion-radio-group>
+  
+  <!-- order items  -->
+  <ion-item lines="full" *ngFor="let p of cart,let i=index">
+    <ion-img [src]="cart[i].img1" style="width: 118px; margin: 10px 0;"></ion-img>
+    <ion-label slot="end">
+      <h2>{{p.title}}</h2>
+      <h3>by {{p.vendor}}</h3>
+      <p>{{p.pfamily}}</p>
+      <ion-text color="danger">
+        <h3>{{p.price|currency}}</h3>
+      </ion-text>
+      <div class="icon-prime" style="margin-bottom: 15px;"></div>
+      <ion-text>Quantity: {{p.count}}</ion-text>
+    </ion-label>
+  </ion-item>
+</ion-card>
+
+<ion-button (click)="presentLoading()" color="warning" shape="round" expand="block">Place your order</ion-button>
+<div style="padding: 10px 15px;">
+  <ion-text color="medium">
+    <p>
+      When you click the "Place your order" button, we'll send you an e-mail message acknowledging receipt of your order. Your contract to purchase an item will not be complete until we send you an e-mail to indicate that the item has been shipped.
+    </p>
+  </ion-text>
+</div>
