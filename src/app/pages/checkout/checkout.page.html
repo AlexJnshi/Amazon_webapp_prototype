@@ -1,7 +1,11 @@
 <!-- The loading animation will show when user click checkout button,
  since there is no order page, so no value will be passed-->
-<ion-button (click)="presentLoading()" color="warning" shape="round" expand="block">Place your order</ion-button>
-<!-- order details summarise, including totle quantity of items, delivery fee, and total price-->
+<ion-button 
+(click)="presentLoading()" 
+color="warning" 
+shape="round" 
+expand="block">Place your order</ion-button>
+<!-- order details summarise -->
 <ion-card>
   <ion-list>
     <ion-item lines="none">
@@ -14,7 +18,9 @@
     </ion-item>
     <ion-item lines="full">
       <ion-label style="font-weight: bolder;" slot="start">Order Total:</ion-label>
-      <ion-text color="danger" style="font-weight: bolder;">{{totalPrice+deliveryFee()|currency}}</ion-text>
+      <ion-text color="danger" style="font-weight: bolder;">
+        {{totalPrice+deliveryFee()|currency}}
+      </ion-text>
     </ion-item>
   </ion-list> 
   <ion-item lines="none">
@@ -56,11 +62,16 @@
   </ion-item>
 </ion-card>
 
-<ion-button (click)="presentLoading()" color="warning" shape="round" expand="block">Place your order</ion-button>
+<ion-button (click)="presentLoading()" color="warning" shape="round" expand="block">
+  Place your order
+</ion-button>
 <div style="padding: 10px 15px;">
   <ion-text color="medium">
     <p>
-      When you click the "Place your order" button, we'll send you an e-mail message acknowledging receipt of your order. Your contract to purchase an item will not be complete until we send you an e-mail to indicate that the item has been shipped.
+      When you click the "Place your order" button, 
+      we'll send you an e-mail message acknowledging receipt of your order. 
+      Your contract to purchase an item will not be complete 
+      until we send you an e-mail to indicate that the item has been shipped.
     </p>
   </ion-text>
 </div>
