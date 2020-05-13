@@ -21,10 +21,10 @@ export class SignInPage implements OnInit {
   ngOnInit() {
   }
 
-  async presentAlertMultipleButtons(msg) {
+  async presentAlertMultipleButtons(message:string) {
     const alert = await this.alertController.create({
       header: 'Sign in massage',
-      message: msg,
+      message,
       buttons: [{
         text:"Ok",
         role:"cancel",
@@ -33,7 +33,6 @@ export class SignInPage implements OnInit {
         }
       }]
     });
-
     await alert.present();
   }
 

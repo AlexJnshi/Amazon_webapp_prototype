@@ -1,54 +1,74 @@
 <ion-item color="none" lines="none">
   <h1>Sign up</h1>
 </ion-item>
-
 <!-- sign in card -->
 <ion-card>
-
   <ion-card-content>
     <!-- name input -->
     <ion-item>
       <ion-label position="floating">Name</ion-label>
-      <ion-input clearInput [(ngModel)]="userName" (ionChange)="userNameChange()"></ion-input>
+      <ion-input 
+      clearInput 
+      [(ngModel)]="userName" 
+      (ionChange)="userNameChange()"></ion-input>
     </ion-item>
-
     <!-- name tips and verification massag-->
     <ion-item lines="none">
-      <ion-text [color]="unameTipsColor"><h6 id="sign-up-page-name-tips">please enter user name</h6></ion-text>
+      <ion-text [color]="unameTipsColor">
+        <h6 id="sign-up-page-name-tips">please enter user name</h6>
+      </ion-text>
     </ion-item>
     <!-- email input -->
     <ion-item>
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" clearInput [(ngModel)]="userEmail" (ionChange)="userEmailChange()"></ion-input>
+      <ion-input 
+      clearInput
+      type="email"  
+      [(ngModel)]="userEmail" 
+      (ionChange)="userEmailChange()"></ion-input>
     </ion-item>
     <!-- email tips and verification massage-->
     <ion-item lines="none">
-      <ion-text [color]="emailTipsColor"><h6 id="sign-up-page-email-tips">please enter email</h6></ion-text>
+      <ion-text [color]="emailTipsColor">
+        <h6 id="sign-up-page-email-tips">please enter email</h6>
+      </ion-text>
     </ion-item>
     <!-- password input -->
     <ion-item>
       <ion-label position="floating">Create a password</ion-label>
-      <ion-input [type]="togglePassword" clearInput [(ngModel)]="userPassword" (ionChange)="userPasswordChange()"></ion-input>
+      <ion-input 
+      clearInput
+      [type]="togglePassword"  
+      [(ngModel)]="userPassword" 
+      (ionChange)="userPasswordChange()"></ion-input>
     </ion-item>
     <!-- password tips and verification-->
     <ion-item lines="none">
-      <ion-text [color]="passwordTipsColor"><h6 id="sign-up-page-password-tips">please enter password</h6></ion-text>
+      <ion-text [color]="passwordTipsColor">
+        <h6 id="sign-up-page-password-tips">please enter password</h6>
+      </ion-text>
     </ion-item>
-  
-  <!-- checkbox toggle show password -->
-  <ion-item lines="none">
-    <ion-checkbox [(ngModel)]="isToggled" (ionChange)="showPassword()"></ion-checkbox>
-    <ion-text><h6>Show password</h6></ion-text>
-  </ion-item> 
 
-  <!-- submit button -->
-    <ion-button [disabled]="signUpBtnDisable()" shape="round" size="default" expand="full" (click)="signUpBtn()" >Continue</ion-button>
-    <br>
-  
-  <!-- member redirect to sign in -->
+    <!-- checkbox toggle show password -->
+    <ion-item lines="none">
+      <ion-checkbox [(ngModel)]="isToggled" (ionChange)="showPassword()"></ion-checkbox>
+      <ion-text><h6>Show password</h6></ion-text>
+    </ion-item> 
+
+    <!-- submit button -->
+    <ion-button 
+    [disabled]="signUpBtnDisable()" 
+    shape="round" 
+    size="default" 
+    expand="full" 
+    (click)="signUpBtn()" >Continue</ion-button>
+    <!-- member redirect to sign in -->
     <ion-item lines="none">
       <ion-text slot="end">
-        Already have a account? <ion-text color="primary" routerLink="/index/sign-in">Sign in</ion-text> 
+        Already have a account? 
+        <ion-text color="primary" routerLink="/index/sign-in">
+          Sign in
+        </ion-text> 
       </ion-text>
     </ion-item>
   </ion-card-content>

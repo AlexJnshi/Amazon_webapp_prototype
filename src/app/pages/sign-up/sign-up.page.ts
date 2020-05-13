@@ -23,12 +23,12 @@ export class SignUpPage implements OnInit {
   isToggled: boolean = false;
   
   // password input [type] bind
-  togglePassword:any = "password"
+  togglePassword:string = "password"
 
   userName:string
   userEmail:string
   userPassword:string
-  
+
   unameTipsColor:string
   emailTipsColor:string
   passwordTipsColor:string
@@ -37,8 +37,6 @@ export class SignUpPage implements OnInit {
   upasswordReg = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[\s\S]{8,16}$/
   emailReg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
 
-
-  //checkbox ionchange
   showPassword(){
     if(this.isToggled){
       this.togglePassword ="text"
@@ -64,7 +62,6 @@ export class SignUpPage implements OnInit {
         .innerHTML = "This username is already in use. please try another one"
       }
     })
-    
   }
 
   //verification for email address
@@ -118,8 +115,6 @@ export class SignUpPage implements OnInit {
     await alert.present();
   }
   
-
-
   signUpBtn(){
     this.myhttp.post("http://192.168.3.10:3000/signup",{
       uname:this.userName,
@@ -132,7 +127,5 @@ export class SignUpPage implements OnInit {
         this.alertMsg("Great!","Sign up successful,please sign in",1)
       }
     })
-
   }
-
 }

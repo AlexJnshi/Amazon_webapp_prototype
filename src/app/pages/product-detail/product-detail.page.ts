@@ -38,7 +38,7 @@ export class ProductDetailPage implements OnInit {
     })
   }
 
-  async presentToast(message) {
+  async presentToast(message:string) {
     const toast = await this.toastController.create({
       message,
       duration: 2000
@@ -70,8 +70,7 @@ export class ProductDetailPage implements OnInit {
     this.myhttp.get(
       "http://192.168.3.10:3000/product-Review/u?rid="+i+
       "&rHelpfulNum="+rHelpfulNum
-   )
-    .subscribe()
+   ).subscribe()
     this.productReview[i].isHelpClicked=true
   }
 

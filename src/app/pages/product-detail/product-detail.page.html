@@ -4,7 +4,10 @@
       <ion-label>
         <h6>{{product[0].vendor}}</h6>
         <h1>{{product[0].title}}-{{product[0].pfamily}}</h1>
-        <div [ngClass]="{'icon-medium-star-4-5':pstar==4.5}" class="icon"></div>
+        <div class="icon
+        {{pstar>=4.75&&pstar<=5?'icon-medium-star-5':''}}
+        {{pstar>=4.25&&pstar<4.75?'icon-medium-star-4-5':''}}
+        {{pstar>=3.75&&pstar<4.25?'icon-medium-star-4':''}}"></div>
       </ion-label>
     </ion-list-header>
 
@@ -16,10 +19,10 @@
       
     <ion-item lines="none">
       <ion-text>
-          <h5>Price:</h5>
+        <h5>Price:</h5>
       </ion-text>
       <ion-text color="danger">
-          <h5 style="padding-left: 10px;">{{product[0].price|currency}}</h5>
+        <h5 style="padding-left: 10px;">{{product[0].price|currency}}</h5>
       </ion-text>
       <div style="margin: 5px 0 0 5px;" [class]="product[0].isPrime?'icon-prime':''">
       </div>
